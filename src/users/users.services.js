@@ -32,7 +32,7 @@ const registerUser = (req, res) => {
     phone,
     birthday,
     gender,
-    country,
+    profileImage
   } = req.body;
 
   if (firstName && lastName && email && password && phone && birthday) {
@@ -46,7 +46,7 @@ const registerUser = (req, res) => {
         phone,
         birthday,
         gender,
-        country,
+        profileImage
       })
       .then((data) => {
         res.status(201).json(data);
@@ -72,10 +72,10 @@ const registerUser = (req, res) => {
 
 const patchUser = (req, res) => {
   const id = req.params.id;
-  const { firstName, lastName, phone, gender, country } = req.body;
+  const { firstName, lastName, phone, gender, profileImage } = req.body;
 
   usersControllers
-    .updateUser(id, { firstName, lastName, phone, gender, country })
+    .updateUser(id, { firstName, lastName, phone, gender, profileImage })
     .then((data) => {
       if (data[0]) {
         res
@@ -110,7 +110,7 @@ const deleteUser = (req, res) => {
 
 const getMyUser = (req, res) => {
   const id = req.user.id; //? req.user contiene la informacion del token desencriptado
-
+  
   usersControllers
     .getUserById(id)
     .then((data) => {
@@ -125,10 +125,10 @@ const getMyUser = (req, res) => {
 
 const patchMyUser = (req, res) => {
   const id = req.user.id;
-  const { firstName, lastName, phone, birthday, gender, country } = req.body;
+  const { firstName, lastName, phone, birthday, gender, profileImage } = req.body;
 
   usersControllers
-    .updateUser(id, { firstName, lastName, phone, birthday, gender, country })
+    .updateUser(id, { firstName, lastName, phone, birthday, gender, profileImage })
     .then(() => {
       res.status(200).json({ message: `Your user was edited succesfully!` });
     })

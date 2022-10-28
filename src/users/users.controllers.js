@@ -16,8 +16,7 @@ const getAllUsers = async () => {
 const getUserById = async (id) => {
     const data = await Users.findOne({
         where: {
-            id: id,
-            status: 'active'
+            id
         }
     })
     return data
@@ -34,7 +33,7 @@ const createUser = async (data) => {
         phone: data.phone,
         birthday: data.birthday,
         gender: data.gender,
-        country: data.country
+        profileImage: data.profileImage
     })
     return newUser
 }
@@ -64,8 +63,7 @@ const getUserByEmail = async(email) => {
     //? SELECT * FROM users where email = 'sahid.kick@academlo.com'//
     const data = await Users.findOne({
         where: {
-            email: email,
-            status: 'active'
+            email: email
         }
     })
     return data

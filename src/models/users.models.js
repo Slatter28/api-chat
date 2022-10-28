@@ -31,29 +31,29 @@ const Users = db.define("users", {
     allowNull: false
   },
   phone: {
-    type: DataTypes.STRING, // +52 
+    type: DataTypes.STRING, 
     allowNull: false,
     unique: true
   },
   birthday: {
     type: DataTypes.DATEONLY,
-    allowNull: false,
   },
   gender: {
     type: DataTypes.STRING,
+  },
+  profileImage: {
+    type: DataTypes.STRING,
+    field: 'profile_image',
   },
   role: {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'normal'
   },
-  country: {
-    type: DataTypes.STRING,
-  },
   status: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'active'
+    defaultValue: 'inactive'
   },
   isVerified: {
     type: DataTypes.BOOLEAN,
